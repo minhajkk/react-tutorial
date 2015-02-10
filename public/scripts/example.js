@@ -29,8 +29,9 @@ var Comment = React.createClass({
 var CommentBox = React.createClass({
   loadCommentsFromServer: function() {
     $.ajax({
-      url: this.props.url,
+      url: "http://grails-restful.herokuapp.com/v2/api/projects.json",
       dataType: 'json',
+      beforeSend: function(xhr){xhr.setRequestHeader('X-AUTH-TOKEN', 'sj8pc46ehbvf281v0tdbpja65qka00fk');},
       success: function(data) {
         this.setState({data: data});
       }.bind(this),
